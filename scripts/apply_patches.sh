@@ -38,4 +38,10 @@ cp -f $GITHUB_WORKSPACE/patch/X2/rk3566-panther-x2.dts patch/kernel/archive/rock
 cp -f $GITHUB_WORKSPACE/patch/X2/rk3566-panther-x2.dts patch/kernel/archive/rockchip64-6.13/dt/
 cp -rf $GITHUB_WORKSPACE/patch/X2/dt patch/kernel/rk35xx-vendor-6.1/
 
+# FMX1 Patches
+echo "Copying FMX1 patches..."
+cp -f $GITHUB_WORKSPACE/patch/FMX1/fmx1.conf config/boards/
+mkdir -p userpatches
+cp -rf $GITHUB_WORKSPACE/patch/FMX1/userpatches/* userpatches
+
 echo "Patches copied successfully."
