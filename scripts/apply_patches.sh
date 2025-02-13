@@ -42,6 +42,6 @@ cp -rf $GITHUB_WORKSPACE/patch/X2/dt patch/kernel/rk35xx-vendor-6.1/
 echo "Copying FMX1 patches..."
 cp -f $GITHUB_WORKSPACE/patch/FMX1/fmx1.conf config/boards/
 mkdir -p userpatches
-cp -rf $GITHUB_WORKSPACE/patch/FMX1/userpatches/* userpatches
+cp -rf $GITHUB_WORKSPACE/patch/FMX1/userpatches/* userpatches/
 
 echo "Patches copied successfully."
