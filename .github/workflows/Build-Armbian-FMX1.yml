@@ -1,4 +1,4 @@
-name: Build-Armbian
+name: Build-Armbian-FMX1
 
 on:
   workflow_dispatch:
@@ -33,6 +33,14 @@ on:
           - 'trixie'
           - 'jammy'
           - 'noble'
+      Version:
+        description: 'Armbian Version'
+        default: 'main'
+        required: false
+        type: choice
+        options:
+          - main
+          - v24.11
       BUILD_DESKTOP:
         description: 'Build desktop environment'
         default: 'no'
@@ -99,7 +107,7 @@ jobs:
         working-directory: /mnt/workdir
         run: |
           df -hT ${PWD}
-          git clone -q --single-branch --depth=1 --branch=main https://github.com/armbian/build.git build
+          git clone -q --single-branch --depth=1 --branch=${{ github.event.inputs.Version }} https://github.com/armbian/build.git build
           ln -sf /mnt/workdir/build $GITHUB_WORKSPACE/build
 
       - name: Apply patches
@@ -117,7 +125,7 @@ jobs:
 
       - name: Set current year and month
         run: |
-          echo "CURRENT_YEAR_MONTH=$(date +'%Y%m')" >> $GITHUB_ENV
+          echo "CURRENT_YEAR_MONTH=$(date +'%Y.%m')" >> $GITHUB_ENV
 
       - name: Prepare Release Metadata
         run: |
@@ -142,7 +150,7 @@ jobs:
           allowUpdates: true
           removeArtifacts: false
           replacesArtifacts: true
-          token: ${{ secrets.GH_TOKEN }}
+          token: ${{ secrets.GITHUB_TOKEN }}
           body: |
             ### Armbian Image Information
             - Release: ${{ inputs.RELEASE }}
