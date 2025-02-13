@@ -9,9 +9,6 @@ on:
         default: 'fmx1'
         type: choice
         options:
-          - 'nanopct4'
-          - 'rock-5c'
-          - 'panther-x2'
           - 'aml-s9xx-box'
           - 'fmx1'
       BRANCH:
