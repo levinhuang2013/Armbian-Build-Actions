@@ -6,13 +6,14 @@ on:
       BOARD:
         description: 'Board type'
         required: true
-        default: 'nanopct4'
+        default: 'fmx1'
         type: choice
         options:
           - 'nanopct4'
           - 'rock-5c'
           - 'panther-x2'
           - 'aml-s9xx-box'
+          - 'fmx1'
       BRANCH:
         description: 'Armbian branch'
         default: 'current'
@@ -42,7 +43,7 @@ on:
           - 'no'
       BUILD_MINIMAL:
         description: 'BUILD MINIMAL environment'
-        default: 'yes'
+        default: 'no'
         required: false
         type: choice
         options:
@@ -50,7 +51,7 @@ on:
           - 'no'
       PREFER_DOCKER:
         description: 'Use Docker build'
-        default: 'no'
+        default: 'yes'
         required: false
         type: choice
         options:
